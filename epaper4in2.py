@@ -154,10 +154,12 @@ class EPD:
 			self._command(DATA_START_TRANSMISSION_1)
 			self.dc(1)			
 			self.cs(0)
-			msg = bytearray()
+#			msg = bytearray()
+			bytenum = self.width * self.height // 8
+			msg = bytearray([0xFF] * bytenum)
 			print("PrepareBlank")
-			for i in range(0, self.width * self.height // 8):
-				msg.extend(bytearray([0xFF]))	
+#			for i in range(0, self.width * self.height // 8):
+#				msg.extend(bytearray([0xFF]))	
 			print("Send blank")
 			self._data(msg)
 			self.cs(1)			
